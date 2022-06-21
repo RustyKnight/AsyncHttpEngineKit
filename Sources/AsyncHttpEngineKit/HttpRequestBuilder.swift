@@ -79,6 +79,15 @@ open class BaseHttpRequestBuilder: HttpRequestBuilder {
     }
     
     @discardableResult
+    public func with(header: String, value: String) -> Self {
+        if headers == nil {
+            headers = [String: String]()
+        }
+        headers![header] = value
+        return self
+    }
+
+    @discardableResult
     public func with(credentials: Credentials) -> Self {
         self.credentials = credentials
         return self
